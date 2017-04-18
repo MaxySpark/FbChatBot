@@ -15,10 +15,15 @@ app.get('/',function(req,res) {
     res.send("running").status(200);
 });
 
-app.get('/webhook',function(req,res) {
-    console.log("here");
-    console.log(req.query);
-    res.send(200);
+app.get('/webhook', function(req, res) {
+  if (req.query['hub.mode'] === 'subscribe' &&
+      req.query['hub.verify_token'] === 'veryverysexy') {
+    console.log("Validating webhook");
+    res.status(200).send(req.query['hub.challenge']);
+  } else {
+    console.error("Failed validation. Make sure the validation tokens match.");
+    res.sendStatus(403);          
+  }  
 });
 app.post('/webhook',function(req,res) {
     console.log("here post");
