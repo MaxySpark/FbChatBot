@@ -18,12 +18,12 @@ app.get('/',function(req,res) {
 app.get('/webhook',function(req,res) {
     console.log("here");
     console.log(req.query);
-    res.status(200);
+    res.send(200);
 });
 app.post('/webhook',function(req,res) {
     console.log("here post");
     console.log(req.query);
-    res.status(200);
+    res.send(200);
 });
 
 app.listen(port, () =>
