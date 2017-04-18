@@ -15,6 +15,11 @@ app.get('/',function(req,res) {
     res.send("running").status(200);
 });
 
+app.get('/webhook',function(req,res) {
+    console.log(req.query);
+    res.status(200);
+});
+
 app.listen(port, () =>
 {
     console.log("Server is Started at - " + port);
