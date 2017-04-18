@@ -1,0 +1,30 @@
+{
+  "name": "fbchatbot",
+  "version": "1.0.0",
+  "description": "A messenger bot",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxySpark/FbChatBot.git"
+  },
+  "keywords": [
+    "bot",
+    "fb",
+    "messenger"
+  ],
+  "author": "MaxySpark (me@bhargab.me)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaxySpark/FbChatBot/issues"
+  },
+  "homepage": "https://github.com/MaxySpark/FbChatBot#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "request": "^2.81.0",
+    "underscore": "^1.8.3"
+  }
+}
