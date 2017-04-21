@@ -15,9 +15,11 @@ app.get('/',function(req,res) {
     res.send("running").status(200);
 });
 
+//validation
+
 app.get('/webhook', function(req, res) {
   if (req.query['hub.mode'] === 'subscribe' &&
-      req.query['hub.verify_token'] === 'veryverysexy') {
+      req.query['hub.verify_token'] === config.varify_token) {
     console.log("Validating webhook");
     res.status(200).send(req.query['hub.challenge']);
   } else {
@@ -25,6 +27,8 @@ app.get('/webhook', function(req, res) {
     res.sendStatus(403);          
   }  
 });
+
+
 app.post('/webhook',function(req,res) {
     console.log("here post");
     console.log(req.query);
