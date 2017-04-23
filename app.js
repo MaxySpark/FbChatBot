@@ -38,7 +38,7 @@ app.post('/webhook',function(req,res) {
         var msgData = data.entry[0].messaging;
         msgData.forEach(function(event) {     
             if (event.hasOwnProperty('delivery')) {
-                continue;
+                console.log("poop delivery!!!");
             } else {
                 sendMsg(msgData);
             }
