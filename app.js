@@ -31,16 +31,16 @@ app.get('/webhook', function(req, res) {
 });
 
 
-app.post('/webhook',function(req,res,next) {
+app.post('/webhook',function(req,res) {
     
     var data = req.body;
     var msgData = data.entry[0].messaging;
 
-    if(data.object == "page") {
+    if(data.object == "page" && !msgData[0].delivery ) {
         sendMsg(msgData);
     }
+
     res.send(200);
-        next();
 });
 
 app.listen(port, () =>
