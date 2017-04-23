@@ -34,11 +34,16 @@ app.get('/webhook', function(req, res) {
 app.post('/webhook',function(req,res) {
     
     var data = req.body;
-    var msgData = data.entry[0].messaging;
-
     if(data.object == "page") {
-        sendMsg(msgData);
-    }
+        var msgData = data.entry[0].messaging;
+        msgData.forEach(function(event) {     
+            if (event.hasOwnProperty('delivery')) {
+                continue;
+            } else {
+                sendMsg(msgData);
+            }
+        });
+    } 
 
     res.send(200);
 });
