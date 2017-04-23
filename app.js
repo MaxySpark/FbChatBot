@@ -31,7 +31,7 @@ app.get('/webhook', function(req, res) {
 });
 
 
-app.post('/webhook',function(req,res) {
+app.post('/webhook',function(req,res,next) {
     
     var data = req.body;
     var msgData = data.entry[0].messaging;
@@ -39,8 +39,8 @@ app.post('/webhook',function(req,res) {
     if(data.object == "page") {
         sendMsg(msgData);
     }
-
     res.send(200);
+        next();
 });
 
 app.listen(port, () =>
