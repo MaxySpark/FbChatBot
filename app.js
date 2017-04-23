@@ -5,7 +5,9 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const _ = require('underscore');
 const app = express();
-var config = require('./lib/config')
+var config = require('./lib/config');
+var methods = require('./lib/methods');
+var sendMsg = methods.sendMsg; 
 
 var port = process.env.PORT || 5000;
 
@@ -30,8 +32,13 @@ app.get('/webhook', function(req, res) {
 
 
 app.post('/webhook',function(req,res) {
-    console.log("here post");
-    console.log(JSON.stringify(req.body));
+    
+    var data = req.body;
+    var msgData = data.entry.messaging;
+    if(data.object == "page") {
+        sendMsg(msgData);
+    }
+
     res.send(200);
 });
 
