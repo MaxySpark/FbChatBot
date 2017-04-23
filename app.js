@@ -36,7 +36,7 @@ app.post('/webhook',function(req,res) {
     var data = req.body;
     var msgData = data.entry[0].messaging;
 
-    if(data.object == "page" && !msgData[0].delivery ) {
+    if(data.object == "page" && !msgData[0].delivery &&! !msgData[0].read ) {
         sendMsg(msgData);
     }
 
