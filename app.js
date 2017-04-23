@@ -35,6 +35,9 @@ app.post('/webhook',function(req,res) {
     
     var data = req.body;
     var msgData = data.entry.messaging;
+
+    console.log(msgData);
+
     if(data.object == "page") {
         sendMsg(msgData);
     }
